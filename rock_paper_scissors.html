@@ -10,7 +10,7 @@
     console.log("My Rock, Paper, Scissors Game version-1")
     
     let randomNumber = Math.floor(Math.random()*300);
-    console.log(randomNumber);
+    //console.log(randomNumber);
 
     function computerPlay(randomNumber) {
       let comp = "Computer's input";
@@ -20,9 +20,11 @@
         comp = "scissors";
       } else comp = "paper";
 
-      console.log(comp);
+      //console.log(comp);
+      return comp;
+    
     }
-    computerPlay(randomNumber);
+    
 
     const yW = "You Win!";
     const yL = "You Lose!";
@@ -32,18 +34,47 @@
 
     let playerSelection;
     let computerSelection;
+        
 
-    function resultCompare(playerSelection, computerSelection) {
+    function playRound(playerSelection, computerSelection) {
+      
       playerSelection = playerSelection.toLowerCase();
-      if(playerSelection == "rock" && computerSelection == "scissors") {
-        const rc1 = `${yW} ${rW}`;
-        console.log(rc1);
-        //console.log(yW + " " + rW);
-        return rc1
-       
-      }
+      computerSelection = computerPlay(randomNumber);
+      let rc1 = "gameResult";
+      
+      console.log(computerSelection);
 
+      if(playerSelection === computerSelection) {
+        rc1 = "Oh! It's a tie!";
+        return rc1;
+      } else if(playerSelection == "rock" && computerSelection == "scissors") {
+        rc1 = `${yW} ${rW}`;
+        return rc1;
+      } else if(playerSelection == "scissors" && computerSelection == "paper") {
+        rc1 = `${yW} ${sW}`;
+        return rc1;
+      } else if(playerSelection == "paper" && computerSelection == "rock") {
+        rc1 = `${yW} ${pW}`;
+        return rc1; 
+      } else if(playerSelection == "scissors" && computerSelection == "rock") {
+        rc1 = `${yL} ${rW}`;
+        return rc1;
+      } else if(playerSelection == "paper" && computerSelection == "scissors") {
+        rc1 = `${yL} ${sW}`;
+        return rc1;
+      } else 
+      //if(playerSelection == "rock" && computerSelection == "paper") {
+        rc1 = `${yL} ${pW}`;
+        return rc1;
+      //}
+      
+    
+        console.log(rc1);
+      
+      
     }
+    function game()
+      
 
 
   </script>
