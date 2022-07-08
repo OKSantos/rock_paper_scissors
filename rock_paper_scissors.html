@@ -34,16 +34,22 @@
 
     let playerSelection;
     let computerSelection;
+    let rc1 = "gameResult";
         
 
-    function playRound(playerSelection, computerSelection) {
-      
+    function playRound(playerSelection = prompt("Enter your choice of 'rock', 'paper' or 'scissors' here!"), computerSelection) {
+
+            
       playerSelection = playerSelection.toLowerCase();
-      computerSelection = computerPlay(randomNumber);
-      let rc1 = "gameResult";
       
+      computerSelection = computerPlay(randomNumber);
+            
       console.log(computerSelection);
 
+      //if(playerSelection !== "rock" || "paper" || "scissors") {
+      //  rc1 = 'SELECTION OUT OF SCOPE!!!';
+      //  return rc1;
+      //} else    
       if(playerSelection === computerSelection) {
         rc1 = "Oh! It's a tie!";
         return rc1;
@@ -73,10 +79,70 @@
       
       
     }
-    function game()
-      
+
+    //Allows the play of multiple rounds in a single game
+    let numOfRounds;
+    let round;
+
+    function game(numOfRounds) {
+  
+      let x =0
+      let y = 0
+      let z = 0
+      let yz = 0
+      for (let i = 0; i < 5; i++) {
+       
+    round = playRound(playerSelection, computerSelection)
+      //if(round == `${yL} ${rW}` || `${yL} ${sW}` || `${yL} ${pW}`) {
+      //  z += 1;
+        //return round;
+      //} else if(round == `${yW} ${rW}` || `${yW} ${sW}` || `${yW} ${pW}`) {
+      //  y += 1;
+        //return round;
+      //} else {yz += 1;
+        //return "Drawn round!";
+      //}
+      switch (round) {
+        case `${yL} ${rW}`:
+        case `${yL} ${sW}`:
+        case `${yL} ${pW}`:
+          z += 1;
+          break;
+        case `${yW} ${rW}`:
+        case `${yW} ${sW}`:
+        case `${yW} ${pW}`:
+          y += 1;
+          break;
+        default:
+          yz += 1;
+      }
+
+      console.log(i + " This is the value of i");
+      console.log(y + "  = Player's wins")
+      console.log(z + " = Computer's wins")
+      console.log("          " + yz + " Drawn games" + "            ")
+      console.log(round + " is the value of round")
+      //console.log("Player  = " + y + " Computer = " + z)
+    }
+
+  console.log("Player  = " + y + " Computer = " + z + " Draw rounds = " + yz)          
+  
+  //console.log("Result Board");
+  //console.log("Game Round No " + x);
+  //console.log("Number of rounds played  =  " + x + " of " + numOfRounds);
+  //console.log("Player won  =  " + y + " | | | | " + "Computer won  =  " + z);
+  //if(yz > 0) {
+  //  console.log("             " + yz + " Drawn games" + "                 ")
+  //  }
+}
+
+console.log(game())
 
 
-  </script>
+  
+
+
+</script>
 </body>
 </html
+
