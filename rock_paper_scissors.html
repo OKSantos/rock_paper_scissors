@@ -14,80 +14,64 @@
 
     function computerPlay(randomNumber) {
       randomNumber = Math.floor(Math.random()*300);
-      let comp;
+      
       if(randomNumber <= 100) {
-        comp = "rock";
+        return "rock";
       } else if(randomNumber > 200) {
-        comp = "scissors";
-      } else comp = "paper";
-
-      return comp;
+        return "scissors";
+      } else {
+        return "paper";
+      }
     }
     
 
-    const yW = "You Win!";
-    const yL = "You Lose!";
-    const rW = "Rock beats Scissors";
-    const sW = "Scissors cuts Paper";
-    const pW = "Paper wraps Rock";
-    const roc = "rock"
-    const pap = "paper"
-    const sci = "scissors"
+    const winner = "You Win!";
+    const loser = "You Lose!";
+    const rockBeats = "Rock beats Scissors";
+    const scissorsCuts = "Scissors cuts Paper";
+    const paperWraps = "Paper wraps Rock";
     let playerSelection;
     let computerSelection;
-    let rc1;
-    let rc2;
-        
-
+    let comparison;
+    
+    
+    //This function compares player's and computer's selections
     function playRound(playerSelection = prompt("Enter your choice of 'rock', 'paper' or 'scissors' here!"), computerSelection) {
-
             
       playerSelection = playerSelection.toLowerCase();
-      
       computerSelection = computerPlay(randomNumber);
-            
-      console.log(computerSelection + " for Computer", playerSelection + "  for Player");
+      console.log("Player's choice " + `"`+playerSelection+`"` +  " ||||| " + "Computer's choice " + `"`+computerSelection+`"`);
 
+      //Switch block detects invalid selection from a player
       switch (playerSelection) {
-        case `${roc}`:
-        case `${pap}`:
-        case `${sci}`:
-           rc2 = selectionComparison(playerSelection, computerSelection);
+        case `rock`:
+        case `paper`:
+        case `scissors`:
+           comparison = selectionComparison(playerSelection, computerSelection);
             break
         default:
-            rc2 = "SELECTION IS INVALID!!!"
+            comparison = "SELECTION IS INVALID!!!"
       }
       
         function selectionComparison(playerSelection, computerSelection) {
             
             if(playerSelection === computerSelection) {
-              rc1 = "Oh! It's a tie!";
-              return rc1;
+              return "Oh! It's a tie!";
             } else if(playerSelection == "rock" && computerSelection == "scissors") {
-              rc1 = `${yW} ${rW}`;
-              return rc1;
+               return `${winner} ${rockBeats}`;
             } else if(playerSelection == "scissors" && computerSelection == "paper") {
-              rc1 = `${yW} ${sW}`;
-              return rc1;
+              return `${winner} ${scissorsCuts}`;
             } else if(playerSelection == "paper" && computerSelection == "rock") {
-              rc1 = `${yW} ${pW}`;
-              return rc1; 
+              return `${winner} ${paperWraps}`;
             } else if(playerSelection == "scissors" && computerSelection == "rock") {
-              rc1 = `${yL} ${rW}`;
-              return rc1;
+              return `${loser} ${rockBeats}`;
             } else if(playerSelection == "paper" && computerSelection == "scissors") {
-              rc1 = `${yL} ${sW}`;
-              return rc1;
+              return `${loser} ${scissorsCuts}`;
             } else {
-              //if(playerSelection == "rock" && computerSelection == "paper") {
-              rc1 = `${yL} ${pW}`;
-              return rc1;
+              return `${loser} ${paperWraps}`;
             }
+
         }
-          //  console.log(rc2);
-          //  console.log(rc1);
-      
-      
     }
 
     //Allows the play of multiple rounds in a single game
@@ -97,51 +81,48 @@
     function game(numOfRounds = prompt("Enter no. of rounds for game --", 5)) {
   
 
-      let y = 0
-      let z = 0
-      let yz = 0
-      let zz = 0
+      let winByPlayer = 0
+      let winByComputer = 0
+      let drawRounds = 0
+      let invalidRounds = 0
       for (let i = 0; i < numOfRounds; i++) {
        
     round = playRound(playerSelection, computerSelection)
       
-      switch (rc2) {
-        case `${yL} ${rW}`:
-        case `${yL} ${sW}`:
-        case `${yL} ${pW}`:
-          z += 1;
+      switch (comparison) {
+        case `${loser} ${rockBeats}`:
+        case `${loser} ${scissorsCuts}`:
+        case `${loser} ${paperWraps}`:
+          winByComputer += 1;
           break;
-        case `${yW} ${rW}`:
-        case `${yW} ${sW}`:
-        case `${yW} ${pW}`:
-          y += 1;
+        case `${winner} ${rockBeats}`:
+        case `${winner} ${scissorsCuts}`:
+        case `${winner} ${paperWraps}`:
+          winByPlayer += 1;
           break;
         case `Oh! It's a tie!`:
-          yz += 1;
+          drawRounds += 1;
           break;
         default:
-          zz += 1;
+          invalidRounds += 1;
       }
-
-      console.log(i + " is the number of rounds");
-      console.log(y + "  = Player's wins")
-      console.log(z + " = Computer's wins")
-      console.log("          " + yz + " Drawn games" + "            ")
-      console.log(zz + " number of invalid rounds")
+      //Result Display Boards
       
+      console.log((i + 1) + " of " + numOfRounds + " is the number of rounds played in this game");
+      console.log(winByPlayer + "  = Player's wins")
+      console.log(winByComputer + " = Computer's wins")
+      console.log("          " + drawRounds + " Draw rounds" + "            ")
+      console.log(invalidRounds + " number of invalid rounds")
     }
-
-    console.log("Player  = " + y + " Computer = " + z + " Draw rounds = " + yz + " Invalid rounds = " +zz)          
+    console.log("|||||||||||||| *Game Result* ||||||||||||||")  
+    console.log("Player  = " + winByPlayer + " Computer = " + winByComputer + " Draw rounds = " + drawRounds + " Invalid rounds = " +invalidRounds)          
   
 }
-
-console.log(game())
-
-
-  
+    //Causes a popup window for 'no of rounds' entry
+    console.log(game())
 
 
-</script>
+  </script>
 </body>
 </html
 
