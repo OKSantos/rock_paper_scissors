@@ -30,10 +30,13 @@
     const rW = "Rock beats Scissors";
     const sW = "Scissors cuts Paper";
     const pW = "Paper wraps Rock";
-
+    const roc = "rock"
+    const pap = "paper"
+    const sci = "scissors"
     let playerSelection;
     let computerSelection;
-    let rc1s;
+    let rc1;
+    let rc2;
         
 
     function playRound(playerSelection = prompt("Enter your choice of 'rock', 'paper' or 'scissors' here!"), computerSelection) {
@@ -43,35 +46,46 @@
       
       computerSelection = computerPlay(randomNumber);
             
-      console.log(computerSelection);
+      console.log(computerSelection + " for Computer", playerSelection + "  for Player");
 
-    
-      if(playerSelection === computerSelection) {
-        rc1 = "Oh! It's a tie!";
-        return rc1;
-      } else if(playerSelection == "rock" && computerSelection == "scissors") {
-        rc1 = `${yW} ${rW}`;
-        return rc1;
-      } else if(playerSelection == "scissors" && computerSelection == "paper") {
-        rc1 = `${yW} ${sW}`;
-        return rc1;
-      } else if(playerSelection == "paper" && computerSelection == "rock") {
-        rc1 = `${yW} ${pW}`;
-        return rc1; 
-      } else if(playerSelection == "scissors" && computerSelection == "rock") {
-        rc1 = `${yL} ${rW}`;
-        return rc1;
-      } else if(playerSelection == "paper" && computerSelection == "scissors") {
-        rc1 = `${yL} ${sW}`;
-        return rc1;
-      } else 
-      //if(playerSelection == "rock" && computerSelection == "paper") {
-        rc1 = `${yL} ${pW}`;
-        return rc1;
-      //}
+      switch (playerSelection) {
+        case `${roc}`:
+        case `${pap}`:
+        case `${sci}`:
+           rc2 = selectionComparison(playerSelection, computerSelection);
+            break
+        default:
+            rc2 = "SELECTION IS INVALID!!!"
+      }
       
-    
-        console.log(rc1);
+        function selectionComparison(playerSelection, computerSelection) {
+            
+            if(playerSelection === computerSelection) {
+              rc1 = "Oh! It's a tie!";
+              return rc1;
+            } else if(playerSelection == "rock" && computerSelection == "scissors") {
+              rc1 = `${yW} ${rW}`;
+              return rc1;
+            } else if(playerSelection == "scissors" && computerSelection == "paper") {
+              rc1 = `${yW} ${sW}`;
+              return rc1;
+            } else if(playerSelection == "paper" && computerSelection == "rock") {
+              rc1 = `${yW} ${pW}`;
+              return rc1; 
+            } else if(playerSelection == "scissors" && computerSelection == "rock") {
+              rc1 = `${yL} ${rW}`;
+              return rc1;
+            } else if(playerSelection == "paper" && computerSelection == "scissors") {
+              rc1 = `${yL} ${sW}`;
+              return rc1;
+            } else 
+              //if(playerSelection == "rock" && computerSelection == "paper") {
+              rc1 = `${yL} ${pW}`;
+              return rc1;
+              console.log(rc1);
+             }
+            console.log(rc2);
+            console.log(rc1);
       
       
     }
@@ -82,7 +96,7 @@
 
     function game(numOfRounds = prompt("Enter no. of rounds for game --", 5)) {
   
-      let x =0
+
       let y = 0
       let z = 0
       let yz = 0
