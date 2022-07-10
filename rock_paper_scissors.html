@@ -9,20 +9,19 @@
 
     console.log("My Rock, Paper, Scissors Game version-1")
     
-    let randomNumber = Math.floor(Math.random()*300);
-    //console.log(randomNumber);
+    //This block generates the computer's selection
+    let randomNumber;
 
     function computerPlay(randomNumber) {
-      let comp = "Computer's input";
+      randomNumber = Math.floor(Math.random()*300);
+      let comp;
       if(randomNumber <= 100) {
         comp = "rock";
       } else if(randomNumber > 200) {
         comp = "scissors";
       } else comp = "paper";
 
-      //console.log(comp);
       return comp;
-    
     }
     
 
@@ -34,7 +33,7 @@
 
     let playerSelection;
     let computerSelection;
-    let rc1 = "gameResult";
+    let rc1s;
         
 
     function playRound(playerSelection = prompt("Enter your choice of 'rock', 'paper' or 'scissors' here!"), computerSelection) {
@@ -46,10 +45,7 @@
             
       console.log(computerSelection);
 
-      //if(playerSelection !== "rock" || "paper" || "scissors") {
-      //  rc1 = 'SELECTION OUT OF SCOPE!!!';
-      //  return rc1;
-      //} else    
+    
       if(playerSelection === computerSelection) {
         rc1 = "Oh! It's a tie!";
         return rc1;
@@ -119,13 +115,6 @@
 
   console.log("Player  = " + y + " Computer = " + z + " Draw rounds = " + yz)          
   
-  //console.log("Result Board");
-  //console.log("Game Round No " + x);
-  //console.log("Number of rounds played  =  " + x + " of " + numOfRounds);
-  //console.log("Player won  =  " + y + " | | | | " + "Computer won  =  " + z);
-  //if(yz > 0) {
-  //  console.log("             " + yz + " Drawn games" + "                 ")
-  //  }
 }
 
 console.log(game())
