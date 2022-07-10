@@ -78,14 +78,14 @@
             } else if(playerSelection == "paper" && computerSelection == "scissors") {
               rc1 = `${yL} ${sW}`;
               return rc1;
-            } else 
+            } else {
               //if(playerSelection == "rock" && computerSelection == "paper") {
               rc1 = `${yL} ${pW}`;
               return rc1;
-              console.log(rc1);
-             }
-            console.log(rc2);
-            console.log(rc1);
+            }
+        }
+          //  console.log(rc2);
+          //  console.log(rc1);
       
       
     }
@@ -100,11 +100,12 @@
       let y = 0
       let z = 0
       let yz = 0
-      for (let i = 0; i < 5; i++) {
+      let zz = 0
+      for (let i = 0; i < numOfRounds; i++) {
        
     round = playRound(playerSelection, computerSelection)
       
-      switch (round) {
+      switch (rc2) {
         case `${yL} ${rW}`:
         case `${yL} ${sW}`:
         case `${yL} ${pW}`:
@@ -115,19 +116,22 @@
         case `${yW} ${pW}`:
           y += 1;
           break;
-        default:
+        case `Oh! It's a tie!`:
           yz += 1;
+          break;
+        default:
+          zz += 1;
       }
 
-      console.log(i + " This is the value of i");
+      console.log(i + " is the number of rounds");
       console.log(y + "  = Player's wins")
       console.log(z + " = Computer's wins")
       console.log("          " + yz + " Drawn games" + "            ")
-      console.log(round + " is the value of round")
+      console.log(zz + " number of invalid rounds")
       
     }
 
-  console.log("Player  = " + y + " Computer = " + z + " Draw rounds = " + yz)          
+    console.log("Player  = " + y + " Computer = " + z + " Draw rounds = " + yz + " Invalid rounds = " +zz)          
   
 }
 
